@@ -1,12 +1,12 @@
-#!/usr/bin/env ruby
-puts "Hello World!!"
+# frozen_string_literal: true
 
+# !/usr/bin/env ruby
 
-class UserInput
+puts 'Hello World!!'
 
+class UserInput #:nodoc:
   def initialize
-
-    puts "You are about to start the Tic Tac Toe game."
+    puts 'You are about to start the Tic Tac Toe game.'
     puts "What's the name of the first player?"
     @player1 = gets.chomp
     puts "What's the name of the second player?"
@@ -14,8 +14,8 @@ class UserInput
 
     @board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     @turn = true
-    @play =true
-    @token
+    @play = true
+    @token = nil
   end
 
   def creation_of_board
@@ -25,49 +25,45 @@ class UserInput
   end
 
   def game
-      counter= 0
-      creation_of_board
+    counter = 0
+    creation_of_board
     while @play
-      @turn ? @token = "X": @token = "O"
+      @token = @turn ? 'X' : 'O'
       move
       @play = counter < 8
       counter += 1
       p counter
-      @turn= !@turn
+      @turn = !@turn
     end
   end
 
   def player_symbol
     puts "{ @turn ? @player1 : @player2 },Choose a symbol:\n 1.- X\n 2.- O"
-    symbol_1 = gets.chomp
-    symbol_2 = gets.chomp
-    p symbol_1
-    p symbol_2
+    symbol_one = gets.chomp
+    symbol_two = gets.chomp
+    p symbol_one
+    p symbol_two
   end
 
   def move
-    puts "#{ @turn ? @player1 : @player2 } Choose a number of the board: "
+    puts "#{@turn ? @player1 : @player2} Choose a number of the board: "
     number = gets.chomp
-     number=number.to_i
+    number = number.to_i
     if number > 9 || number < 1
-      p "Error, you need to choose another number for moves."
+      p 'Error, you need to choose another number for moves.'
     else
       case number
       when 1..3
-         @board[0][number - 1] = @token
-
-         creation_of_board()
+        @board[0][number - 1] = @token
       when 4..6
         puts @board[1][number - 4] = @token
-        creation_of_board()
-
       else
         puts @board[2][number - 7] = @token
-        creation_of_board()
       end
+      creation_of_board
     end
   end
 end
+
 prueba = UserInput.new
 prueba.game
-
