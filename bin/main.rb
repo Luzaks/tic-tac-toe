@@ -77,7 +77,6 @@ class UserInput #:nodoc:
            puts "Estoy en el else"
           end
         end
-      end
 
 
 
