@@ -49,25 +49,34 @@ class UserInput #:nodoc:
     puts "#{@turn ? @player1 : @player2} Choose a number of the board: "
     number = gets.chomp
     number = number.to_i
-    if number > 9 || number < 1
-      p 'Error, you need to choose another number for moves.'
-    else
-      case number
-      when 1..3
-        if @board[0][number - 1].is_a?Integer 
-           @board[0][number - 1] = @token 
-        else 
-           puts "esta entrando el else"
+
+    #until  @board.select { |x| x.select { |y| puts y == number } }
+      #puts 'Please choose another location: '
+     # number = gets.chomp
+     # number = number.to_i
+    #end
+        until  number < 10 && number > 0
+        #@board.select { |x| x.select { |y| puts y == number } }
+         puts 'Please choose another location: '
+         number = gets.chomp
+         number = number.to_i
+         case number
+         when 1..3
+           if @board[0][number - 1].is_a?Integer
+             @board[0][number - 1] = @token
+           else
+             puts "esta entrando el else"
+           end
+         when 4..6
+           puts @board[1][number - 4] = @token
+         when 7..9
+           puts @board[2][number - 7] = @token
+         else
+           puts "Estoy en el else"
         end
-      when 4..6
-        puts @board[1][number - 4] = @token
-      when 7..9
-        puts @board[2][number - 7] = @token
-      else
-        p "invalid try again"
       end
       creation_of_board
-    end
+
   end
 
   def compares_move
