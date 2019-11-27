@@ -58,13 +58,13 @@ class UserInput #:nodoc:
            @board[0][number - 1] = @token 
         else 
            puts "esta entrando el else"
+        end
       when 4..6
         puts @board[1][number - 4] = @token
       when 7..9
         puts @board[2][number - 7] = @token
       else
         p "invalid try again"
-      retry 
       end
       creation_of_board
     end
