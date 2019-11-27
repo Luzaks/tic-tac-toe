@@ -14,6 +14,8 @@ class UserInput #:nodoc:
     @turn = true
     @play = true
     @token = nil
+    @number= nil
+    @array_of_number= []
   end
 
   def creation_of_board
@@ -47,32 +49,40 @@ class UserInput #:nodoc:
 
   def move
     puts "#{@turn ? @player1 : @player2} Choose a number of the board: "
-    number = gets.chomp
-    number = number.to_i
+    @number = gets.chomp
+    @number = @number.to_i
+    # @array_of_number << @number
+
 
     #until  @board.select { |x| x.select { |y| puts y == number } }
       #puts 'Please choose another location: '
      # number = gets.chomp
      # number = number.to_i
     #end
-    until  number < 10 && number > 0
+    until  @number < 10 && @number > 0 && @array_of_number.none?(@number)
     #@board.select { |x| x.select { |y| puts y == number } }
+    p @array_of_number.none?(@number)
       puts 'Please choose another location: '
-      number = gets.chomp
-      number = number.to_i
+      @number = gets.chomp
+      @number = @number.to_i
+      # @array_of_number << @number
     end 
     cases_for_number_selected
+    p @array_of_number 
     creation_of_board
   end
-        
+     
       def cases_for_number_selected
-        case number
+        case @number
          when 1..3
-             @board[0][number - 1] = @token
+             @board[0][@number - 1] = @token
+             @array_of_number << @number
          when 4..6
-           puts @board[1][number - 4] = @token
+           puts @board[1][@number - 4] = @token
+           @array_of_number << @number
          when 7..9
-           puts @board[2][number - 7] = @token
+           puts @board[2][@number - 7] = @token
+           @array_of_number << @number
          else
            puts "Estoy en el else"
           end
