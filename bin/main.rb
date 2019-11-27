@@ -55,29 +55,31 @@ class UserInput #:nodoc:
      # number = gets.chomp
      # number = number.to_i
     #end
-        until  number < 10 && number > 0
-        #@board.select { |x| x.select { |y| puts y == number } }
-         puts 'Please choose another location: '
-         number = gets.chomp
-         number = number.to_i
-         case number
+    until  number < 10 && number > 0
+    #@board.select { |x| x.select { |y| puts y == number } }
+      puts 'Please choose another location: '
+      number = gets.chomp
+      number = number.to_i
+    end 
+    cases_for_number_selected
+    creation_of_board
+  end
+        
+      def cases_for_number_selected
+        case number
          when 1..3
-           if @board[0][number - 1].is_a?Integer
              @board[0][number - 1] = @token
-           else
-             puts "esta entrando el else"
-           end
          when 4..6
            puts @board[1][number - 4] = @token
          when 7..9
            puts @board[2][number - 7] = @token
          else
            puts "Estoy en el else"
+          end
         end
       end
-      creation_of_board
 
-  end
+
 
   def compares_move
     #compares if its a winning move, a draw move, a losing move, or continues playing
@@ -87,6 +89,7 @@ class UserInput #:nodoc:
     #method for ending game showing message: tie, win (player 1 or 2)
   end
 end
+
 
 prueba = UserInput.new
 prueba.game
