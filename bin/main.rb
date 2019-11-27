@@ -25,48 +25,28 @@ class UserInput #:nodoc:
   end
 
   def game
-    counter = 0
     creation_of_board
     while @play
       @token = @turn ? 'X' : 'O'
       move #method for adding an x or and o to the board 
-      # compares_move   method for comparing if its a winning move, draw move, invalid, or continue playing
-      @play = counter < 8
-      counter += 1
-      p counter
+      # compares_move   method for comparing if its a winning move, draw move, invalid, or continue playing- ITS GOING TO BE ADDED TO THE LOGIC
       @turn = !@turn
-      #  end_game
+      #  def end_game this is going to determine if there is a winning move, or a tie move, the program end- ITS GOING TO BE ADDED TO THE LOGIC
     end
+    #def display who wins or if its a tie
   end
 
-  def player_symbol
-    puts "{ @turn ? @player1 : @player2 },Choose a symbol:\n 1.- X\n 2.- O"
-    symbol_one = gets.chomp
-    symbol_two = gets.chomp
-    p symbol_one
-    p symbol_two
-  end
 
   def move
     puts "#{@turn ? @player1 : @player2} Choose a number of the board: "
     @number = gets.chomp
     @number = @number.to_i
-    # @array_of_number << @number
-
-
-    #until  @board.select { |x| x.select { |y| puts y == number } }
-      #puts 'Please choose another location: '
-     # number = gets.chomp
-     # number = number.to_i
-    #end
-    until  @number < 10 && @number > 0 && @array_of_number.none?(@number)
-    #@board.select { |x| x.select { |y| puts y == number } }
-    p @array_of_number.none?(@number)
-      puts 'Please choose another location: '
-      @number = gets.chomp
-      @number = @number.to_i
-      # @array_of_number << @number
-    end 
+      until  @number < 10 && @number > 0 && @array_of_number.none?(@number)
+      p @array_of_number.none?(@number)
+        puts 'Please choose another location: '
+        @number = gets.chomp
+        @number = @number.to_i
+      end 
     cases_for_number_selected
     p @array_of_number 
     creation_of_board
@@ -88,15 +68,6 @@ class UserInput #:nodoc:
           end
         end
 
-
-
-  def compares_move
-    #compares if its a winning move, a draw move, a losing move, or continues playing
-  end
-
-  def end_game
-    #method for ending game showing message: tie, win (player 1 or 2)
-  end
 end
 
 
