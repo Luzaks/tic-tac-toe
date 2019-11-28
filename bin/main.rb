@@ -31,14 +31,14 @@ class UserInput #:nodoc:
         @logic.turn = !@logic.turn
       end
     end
-     retry_game
+    retry_game
   end
 
   def move
     puts " #{@logic.turn ? @player1 : @player2} Choose a number of the board: "
     @logic.number = gets.chomp
     @logic.number = @logic.number.to_i
-   
+
     until @logic.number < 10 && @logic.number.positive? && @logic.array_of_number.none?(@logic.number)
       @logic.array_of_number.none?(@logic.number)
       puts 'Please choose another location: '
@@ -49,30 +49,27 @@ class UserInput #:nodoc:
     @logic.array_of_number
     puts "\e[H\e[2J"
     @logic.creation_of_board
-   
   end
- 
-   def retry_game
-    puts " Wanna play again?(Y|N)"
+
+  def retry_game
+    puts ' Wanna play again?(Y|N)'
     @retry = gets.chomp
-    @retry = @retry.upcase  
-    until @retry== "Y" || @retry == "N"
-      puts " Please select a valid option"
+    @retry = @retry.upcase
+    until @retry == 'Y' || @retry == 'N'
+      puts ' Please select a valid option'
       @retry = gets.chomp
-      @retry = @retry.upcase  
+      @retry = @retry.upcase
     end
-    if @retry == "Y"
-    @play = true
-    puts "\e[H\e[2J"
-    UserInput.new
-    @logic.array_of_number = []
-    game
+    if @retry == 'Y'
+      @play = true
+      puts "\e[H\e[2J"
+      UserInput.new
+      @logic.array_of_number = []
+      game
     else
-    p " Bye"
+      p ' Bye'
     end
   end
-
-
 end
 
 test = UserInput.new
