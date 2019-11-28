@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class GameLogic
-  attr_accessor :number, :board, :turn
-  attr_reader :array_of_number,  :tie, :token 
+class GameLogic #:nodoc:
+  attr_accessor :number, :board, :turn, :array_of_number
+  attr_reader :tie, :token
   def initialize
     @@board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     @array_of_number = []
@@ -21,7 +21,6 @@ class GameLogic
   def change_turn
     @@token = @turn ? 'X' : 'O'
   end
- 
 
   def cases_for_number_selected
     case @number
@@ -34,11 +33,8 @@ class GameLogic
     when 7..9
       puts @@board[2][@number - 7] = @@token
       @array_of_number << @number
-    else
     end
   end
-
- 
 
   def winning_moves
     case
@@ -63,14 +59,11 @@ class GameLogic
     end
   end
 
-
-
   def tie
-       @@tie = @@board.all? do |x|
-        x.all? do |cell|
-           cell.class == String
-        end
+    @@tie = @@board.all? do |x|
+      x.all? do |cell|
+        cell.class == String
       end
+    end
   end
-
 end
