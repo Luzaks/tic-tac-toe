@@ -14,6 +14,7 @@ class UserInput #:nodoc:
     @logic = GameLogic.new
   end
 
+
   def game
     puts `clear`
     @logic.creation_of_board

@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class GameLogic
-  attr_accessor :board, :array_of_number, :number, :token, :turn, :tie
+  attr_accessor :number, :board, :turn
+  attr_reader :array_of_number,  :tie, :token 
   def initialize
     @@board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     @array_of_number = []
@@ -20,6 +21,7 @@ class GameLogic
   def change_turn
     @@token = @turn ? 'X' : 'O'
   end
+ 
 
   def cases_for_number_selected
     case @number
@@ -35,6 +37,8 @@ class GameLogic
     else
     end
   end
+
+ 
 
   def winning_moves
     case
@@ -59,6 +63,8 @@ class GameLogic
     end
   end
 
+
+
   def tie
        @@tie = @@board.all? do |x|
         x.all? do |cell|
@@ -66,13 +72,5 @@ class GameLogic
         end
       end
   end
-
-  def end_game
-    return true if @tie || winning_moves
-  end
-
-
-
-
 
 end
