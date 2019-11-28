@@ -15,13 +15,13 @@ class UserInput #:nodoc:
   end
 
   def game
-    puts `clear`
+    puts "\e[H\e[2J"
     @logic.creation_of_board
     while @play
       @logic.change_turn
       move
       if @logic.winning_moves
-        puts `clear`
+        puts "\e[H\e[2J"
         puts " #{@logic.turn ? @player1 : @player2}!!  You Win! "
         @play = false
       elsif @logic.tie != false
@@ -47,7 +47,7 @@ class UserInput #:nodoc:
     end
     @logic.cases_for_number_selected
     @logic.array_of_number
-    puts `clear`
+    puts "\e[H\e[2J"
     @logic.creation_of_board
    
   end
@@ -63,7 +63,7 @@ class UserInput #:nodoc:
     end
     if @retry == "Y"
     @play = true
-    puts `clear`
+    puts "\e[H\e[2J"
     UserInput.new
     @logic.array_of_number = []
     game
