@@ -19,8 +19,8 @@ class UserInput #:nodoc:
     @logic.creation_of_board
     while @play
       @logic.change_turn
-      move # method for making valid moves and informs to the user "if" the move is invalid.
-      # compares_move method for comparing "if" its a winning move, draw move or continue playing- ITS GOING TO BE ADDED TO THE LOGIC
+      move 
+      @logic.winning_moves# compares_move method for comparing "if" its a winning move, draw move or continue playing- ITS GOING TO BE ADDED TO THE LOGIC
       @logic.turn = !@logic.turn
       #  method end_game will "end" the game and display who wins or "if" its a tie and goes out from the loop- ITS GOING TO BE ADDED TO THE LOGIC
     end
@@ -31,13 +31,13 @@ class UserInput #:nodoc:
     @logic.number = gets.chomp
     @logic.number = @logic.number.to_i
     until @logic.number < 10 && @logic.number.positive? && @logic.array_of_number.none?(@logic.number)
-      p @logic.array_of_number.none?(@logic.number)
+       @logic.array_of_number.none?(@logic.number)
       puts 'Please choose another location: '
       @logic.number = gets.chomp
       @logic.number = @logic.number.to_i
     end
     @logic.cases_for_number_selected
-    p @logic.array_of_number
+     @logic.array_of_number
     @logic.creation_of_board
   end
 end

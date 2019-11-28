@@ -35,4 +35,27 @@ class  GameLogic
       puts 'Estoy en el else'
     end
   end
+
+  def winning_moves 
+    case 
+      when @board[0][0] == @token &&  @board[0][1] == @token && @board[0][2] == @token
+        p "Ganaste yeii primera fila"
+      when @board[1][0] == @token &&  @board[1][1] == @token && @board[1][2] == @token
+        p "Ganaste segunda fila"
+      when @board[2][0] == @token &&  @board[2][1] == @token && @board[2][2] == @token
+      p "Ganaste tercera fila"
+      when @board[0][0] == @token && @board[1][0] == @token && @board[2][0] == @token
+      p "Ganaste primera columna"
+      when @board[0][1] == @token &&  @board[1][1] == @token &&  @board[2][1] == @token 
+      p "Ganaste segunda columna"
+      when  @board[0][2] == @token && @board[1][2] == @token && @board[2][2] == @token
+      p "Ganaste tercera columna"
+      when  @board[0][0] == @token && @board[1][1] == @token && @board[2][2] == @token
+      p "ganaste primer inclinado"
+      when  @board[0][2] == @token && @board[1][1] == @token && @board[2][0] == @token
+      p "ganaste segundo inclinado"
+      else 
+      p "siguele intentando"
+    end
+  end
 end
