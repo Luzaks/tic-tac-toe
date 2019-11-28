@@ -33,7 +33,6 @@ class GameLogic
       puts @@board[2][@number - 7] = @@token
       @array_of_number << @number
     else
-      puts 'Estoy en el else'
     end
   end
 

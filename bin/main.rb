@@ -1,14 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true.
-puts 'Hello World!!'
 require_relative "../lib/logic"
 
 class UserInput #:nodoc:
   def initialize
-    puts 'You are about to start the Tic Tac Toe game.'
-    puts "What's the name of the first player?"
+    puts ' You are about to start the Tic Tac Toe game.'
+    puts " What's the name of the first player?"
     @player1 = gets.chomp
-    puts "What's the name of the second player?"
+    puts " What's the name of the second player?"
     @player2 = gets.chomp
     @play = true
     @retry = nil
@@ -16,15 +15,17 @@ class UserInput #:nodoc:
   end
 
   def game
+    puts `clear`
     @logic.creation_of_board
     while @play
       @logic.change_turn
       move
       if @logic.winning_moves
-        puts "#{@logic.turn ? @player1 : @player2}  ya ganaste "
+        puts `clear`
+        puts " #{@logic.turn ? @player1 : @player2}!!  You Win! "
         @play = false
       elsif @logic.tie != false
-        puts "Es un empate"
+        puts "It's a tie!"
         @play = false
       else
         @logic.turn = !@logic.turn
@@ -34,7 +35,7 @@ class UserInput #:nodoc:
   end
 
   def move
-    puts "#{@logic.turn ? @player1 : @player2} Choose a number of the board: "
+    puts " #{@logic.turn ? @player1 : @player2} Choose a number of the board: "
     @logic.number = gets.chomp
     @logic.number = @logic.number.to_i
    
@@ -46,31 +47,33 @@ class UserInput #:nodoc:
     end
     @logic.cases_for_number_selected
     @logic.array_of_number
+    puts `clear`
     @logic.creation_of_board
    
   end
  
    def retry_game
-    puts "Wanna play again?(Y|N)"
+    puts " Wanna play again?(Y|N)"
     @retry = gets.chomp
     @retry = @retry.upcase  
     until @retry== "Y" || @retry == "N"
-      puts "Please select a valid option"
+      puts " Please select a valid option"
       @retry = gets.chomp
       @retry = @retry.upcase  
     end
     if @retry == "Y"
     @play = true
+    puts `clear`
     UserInput.new
     @logic.array_of_number = []
     game
     else
-   p "bye"
+    p " Bye"
     end
   end
 
 
 end
 
-prueba = UserInput.new
-prueba.game
+test = UserInput.new
+test.game
