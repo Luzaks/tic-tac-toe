@@ -20,11 +20,18 @@ class UserInput #:nodoc:
     while @play
       @logic.change_turn
       move 
-      @logic.winning_moves# compares_move method for comparing "if" its a winning move, draw move or continue playing- ITS GOING TO BE ADDED TO THE LOGIC
+      if  @logic.winning_moves == true
+      puts "#{@logic.turn ? @player1 : @player2}  ya ganaste "
+      @play=false
+      else 
       @logic.turn = !@logic.turn
+      end
       #  method end_game will "end" the game and display who wins or "if" its a tie and goes out from the loop- ITS GOING TO BE ADDED TO THE LOGIC
     end
   end
+
+
+   
 
   def move
     puts "#{@logic.turn ? @player1 : @player2} Choose a number of the board: "

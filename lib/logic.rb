@@ -39,23 +39,23 @@ class  GameLogic
   def winning_moves 
     case 
       when @board[0][0] == @token &&  @board[0][1] == @token && @board[0][2] == @token
-        p "Ganaste yeii primera fila"
+       return true
       when @board[1][0] == @token &&  @board[1][1] == @token && @board[1][2] == @token
-        p "Ganaste segunda fila"
+        return true
       when @board[2][0] == @token &&  @board[2][1] == @token && @board[2][2] == @token
-      p "Ganaste tercera fila"
+        return true
       when @board[0][0] == @token && @board[1][0] == @token && @board[2][0] == @token
-      p "Ganaste primera columna"
+        return true
       when @board[0][1] == @token &&  @board[1][1] == @token &&  @board[2][1] == @token 
-      p "Ganaste segunda columna"
+        return true
       when  @board[0][2] == @token && @board[1][2] == @token && @board[2][2] == @token
-      p "Ganaste tercera columna"
+        return true
       when  @board[0][0] == @token && @board[1][1] == @token && @board[2][2] == @token
-      p "ganaste primer inclinado"
+        return true
       when  @board[0][2] == @token && @board[1][1] == @token && @board[2][0] == @token
-      p "ganaste segundo inclinado"
+        return true
       else 
-      p "siguele intentando"
+        return false
     end
   end
 end
