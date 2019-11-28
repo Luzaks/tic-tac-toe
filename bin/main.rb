@@ -11,6 +11,7 @@ class UserInput #:nodoc:
     puts "What's the name of the second player?"
     @player2 = gets.chomp
     @play = true
+    @retry = nil
     @logic = GameLogic.new
   end
 
@@ -28,14 +29,15 @@ class UserInput #:nodoc:
       else
         @logic.turn = !@logic.turn
       end
-      #  method end_game will "end" the game and display who wins or "if" its a tie and goes out from the loop- ITS GOING TO BE ADDED TO THE LOGIC
     end
+     retry_game
   end
 
   def move
     puts "#{@logic.turn ? @player1 : @player2} Choose a number of the board: "
     @logic.number = gets.chomp
     @logic.number = @logic.number.to_i
+   
     until @logic.number < 10 && @logic.number.positive? && @logic.array_of_number.none?(@logic.number)
       @logic.array_of_number.none?(@logic.number)
       puts 'Please choose another location: '
@@ -45,7 +47,29 @@ class UserInput #:nodoc:
     @logic.cases_for_number_selected
     @logic.array_of_number
     @logic.creation_of_board
+   
   end
+ 
+   def retry_game
+    puts "Wanna play again?(Y|N)"
+    @retry = gets.chomp
+    @retry = @retry.upcase  
+    until @retry== "Y" || @retry == "N"
+      puts "Please select a valid option"
+      @retry = gets.chomp
+      @retry = @retry.upcase  
+    end
+    if @retry == "Y"
+    @play = true
+    UserInput.new
+    @logic.array_of_number = []
+    game
+    else
+   p "bye"
+    end
+  end
+
+
 end
 
 prueba = UserInput.new

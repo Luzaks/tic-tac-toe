@@ -66,11 +66,14 @@ class GameLogic
            cell.class == String
         end
       end
-    p @@tie
   end
 
   def end_game
     return true if @tie || winning_moves
   end
+
+
+
+
 
 end
