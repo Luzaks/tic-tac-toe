@@ -20,7 +20,7 @@ class UserInput #:nodoc:
     while @play
       @logic.change_turn
       puts " #{@logic.turn ? @player1 : @player2} Choose a number of the board: "
-      @logic.move(gets.chomp.to_i)
+      puts 'Please choose another location: ' until @logic.move(gets.chomp.to_i)
       if @logic.winning_moves
         puts "\e[H\e[2J"
         puts " #{@logic.turn ? @player1 : @player2}!!  You Win! "

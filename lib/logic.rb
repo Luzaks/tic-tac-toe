@@ -49,23 +49,24 @@ class GameLogic #:nodoc:
 
   end
 
-  
+
   def move(number)
-    until number < 10 && number.positive? && @array_of_number.none?(number)
-      puts 'Please choose another location: '
-      number = gets.chomp
-      number = number.to_i
-    end
-    case number
-    when 1..3
-      @board[0][number - 1] = @@token
-      @array_of_number << number
-    when 4..6
-      @board[1][number - 4] = @@token
-      @array_of_number << number
-    when 7..9
-      @board[2][number - 7] = @@token
-      @array_of_number << number
+    if number < 10 && number.positive? && @array_of_number.none?(number)
+      case number
+      when 1..3
+        @board[0][number - 1] = @@token
+        @array_of_number << number
+        true
+      when 4..6
+        @board[1][number - 4] = @@token
+        @array_of_number << number
+        true
+      when 7..9
+        @board[2][number - 7] = @@token
+        @array_of_number << number
+        true
+      end
+      false
     end
     @array_of_number
     puts "\e[H\e[2J"
