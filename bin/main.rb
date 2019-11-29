@@ -19,7 +19,8 @@ class UserInput #:nodoc:
     @logic.creation_of_board
     while @play
       @logic.change_turn
-      move
+      puts " #{@logic.turn ? @player1 : @player2} Choose a number of the board: "
+      @logic.move(gets.chomp.to_i)
       if @logic.winning_moves
         puts "\e[H\e[2J"
         puts " #{@logic.turn ? @player1 : @player2}!!  You Win! "
@@ -33,25 +34,6 @@ class UserInput #:nodoc:
     end
     retry_game
   end
-
-  def move
-    puts " #{@logic.turn ? @player1 : @player2} Choose a number of the board: "
-    @logic.number = gets.chomp
-    @logic.number = @logic.number.to_i
-
-    until @logic.number < 10 && @logic.number.positive? && @logic.array_of_number.none?(@logic.number)
-      @logic.array_of_number.none?(@logic.number)
-      puts 'Please choose another location: '
-      @logic.number = gets.chomp
-      @logic.number = @logic.number.to_i
-    end
-    @logic.cases_for_number_selected
-    @logic.array_of_number
-    puts "\e[H\e[2J"
-    @logic.creation_of_board
-  end
-
-
 
   def retry_game
     puts ' Wanna play again?(Y|N)'

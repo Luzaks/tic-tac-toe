@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class GameLogic #:nodoc:
-  attr_writer :number
   attr_reader :tie, :token, :board, :turn, :number, :array_of_number
   def initialize
     @array_of_number = []
@@ -14,20 +13,6 @@ class GameLogic #:nodoc:
 
   def change_turn
     @@token = @turn ? 'X' : 'O'
-  end
-
-  def cases_for_number_selected
-    case @number
-    when 1..3
-      @board[0][@number - 1] = @@token
-      @array_of_number << @number
-    when 4..6
-      @board[1][@number - 4] = @@token
-      @array_of_number << @number
-    when 7..9
-      @board[2][@number - 7] = @@token
-      @array_of_number << @number
-    end
   end
 
   def winning_moves
@@ -62,6 +47,29 @@ class GameLogic #:nodoc:
      @board =[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
      @turn = true
 
+  end
+
+  
+  def move(number)
+    until number < 10 && number.positive? && @array_of_number.none?(number)
+      puts 'Please choose another location: '
+      number = gets.chomp
+      number = number.to_i
+    end
+    case number
+    when 1..3
+      @board[0][number - 1] = @@token
+      @array_of_number << number
+    when 4..6
+      @board[1][number - 4] = @@token
+      @array_of_number << number
+    when 7..9
+      @board[2][number - 7] = @@token
+      @array_of_number << number
+    end
+    @array_of_number
+    puts "\e[H\e[2J"
+    creation_of_board
   end
 
   def creation_of_board
