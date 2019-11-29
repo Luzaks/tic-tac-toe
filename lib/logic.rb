@@ -53,20 +53,21 @@ class GameLogic #:nodoc:
       case number
       when 1..3
         @board[0][number - 1] = @@token
-        @array_of_number << number
+      p @array_of_number << number
         true
       when 4..6
         @board[1][number - 4] = @@token
-        @array_of_number << number
+       p  @array_of_number << number
         true
       when 7..9
         @board[2][number - 7] = @@token
-        @array_of_number << number
+        p @array_of_number << number
         true
       end
-      false
+    else 
+      return false
     end
-    @array_of_number
+    p @array_of_number
     puts "\e[H\e[2J"
     creation_of_board
   end
@@ -76,6 +77,8 @@ class GameLogic #:nodoc:
       p @board[x].join(' ')
     end
   end
+
+  
 
   def tie
     @@tie = @board.all? do |x|

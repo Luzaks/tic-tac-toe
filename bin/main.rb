@@ -1,60 +1,54 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true.
 require_relative "../lib/logic"
-
-class UserInput #:nodoc:
-  def initialize
-    @play = true
-    @retry = nil
-    @logic = GameLogic.new
-  end
-
+     
+    retries=nil
+   
   def game
     puts ' You are about to start the Tic Tac Toe game.'
     puts " What's the name of the first player?"
-    @player1 = gets.chomp
+    player1 = gets.chomp
     puts " What's the name of the second player?"
-    @player2 = gets.chomp
+    player2 = gets.chomp
     puts "\e[H\e[2J"
-    @logic.creation_of_board
-    while @play
-      @logic.change_turn
-      puts " #{@logic.turn ? @player1 : @player2} Choose a number of the board: "
-      puts 'Please choose another location: ' until @logic.move(gets.chomp.to_i)
-      if @logic.winning_moves
-        puts "\e[H\e[2J"
-        puts " #{@logic.turn ? @player1 : @player2}!!  You Win! "
-        @play = false
-      elsif @logic.tie != false
-        puts "It's a tie!"
-        @play = false
-      else
-        @logic.dif_logic
-      end
+    test = GameLogic.new
+    test.creation_of_board
+    play=true
+    while play
+      test.change_turn
+      puts " #{test.turn ? player1 : player2} Choose a number of the board: "
+      puts 'Please choose another location: ' until test.move(gets.chomp.to_i)
+    
+      
+        if test.winning_moves
+          puts "\e[H\e[2J"
+          puts " #{test.turn ? player1 : player2}!!  You Win! "
+          play = false
+        elsif test.tie != false
+          puts "It's a tie!"
+          play = false
+        else
+          test.dif_logic
+        end
     end
-    retry_game
-  end
 
-  def retry_game
     puts ' Wanna play again?(Y|N)'
-    @retry = gets.chomp
-    @retry = @retry.upcase
-    until @retry == 'Y' || @retry == 'N'
-      puts ' Please select a valid option'
-      @retry = gets.chomp
-      @retry = @retry.upcase
-    end
-    if @retry == 'Y'
-      @play = true
-      puts "\e[H\e[2J"
-      UserInput.new
-      @logic.clear_board
-      game
-    else
-      p ' Bye'
+
+    def retry_game(retries)
+        if retries== 'Y'
+          play = true
+          puts "\e[H\e[2J"
+          game
+        elsif retries == 'N'
+          p ' Bye'
+         else 
+      return false
     end
   end
-end
 
-test = UserInput.new
-test.game
+    puts ' Please select a valid option' until retry_game(gets.chomp.upcase)
+ 
+  
+end
+  
+game
