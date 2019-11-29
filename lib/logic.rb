@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GameLogic #:nodoc:
-  attr_writer :number, :turn, :array_of_number, :board
+  attr_writer :number
   attr_reader :tie, :token, :board, :turn, :number, :array_of_number
   def initialize
     @array_of_number = []
@@ -50,6 +50,23 @@ class GameLogic #:nodoc:
       true
     else
       false
+    end
+  end
+
+  def dif_logic
+    @turn = !@turn
+  end
+
+  def clear_board 
+     @array_of_number = []
+     @board =[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+     @turn = true
+
+  end
+
+  def creation_of_board
+    3.times do |x|
+      p @board[x].join(' ')
     end
   end
 

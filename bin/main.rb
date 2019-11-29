@@ -4,20 +4,19 @@ require_relative "../lib/logic"
 
 class UserInput #:nodoc:
   def initialize
-    puts ' You are about to start the Tic Tac Toe game.'
-    puts " What's the name of the first player?"
-    @player1 = gets.chomp
-    puts " What's the name of the second player?"
-    @player2 = gets.chomp
     @play = true
     @retry = nil
     @logic = GameLogic.new
   end
 
   def game
+    puts ' You are about to start the Tic Tac Toe game.'
+    puts " What's the name of the first player?"
+    @player1 = gets.chomp
+    puts " What's the name of the second player?"
+    @player2 = gets.chomp
     puts "\e[H\e[2J"
-    creation_of_board
-
+    @logic.creation_of_board
     while @play
       @logic.change_turn
       move
@@ -29,7 +28,7 @@ class UserInput #:nodoc:
         puts "It's a tie!"
         @play = false
       else
-        @logic.turn = !@logic.turn
+        @logic.dif_logic
       end
     end
     retry_game
@@ -49,14 +48,10 @@ class UserInput #:nodoc:
     @logic.cases_for_number_selected
     @logic.array_of_number
     puts "\e[H\e[2J"
-    creation_of_board
+    @logic.creation_of_board
   end
 
-  def creation_of_board
-    3.times do |x|
-      p @logic.board[x].join(' ')
-    end
-  end
+
 
   def retry_game
     puts ' Wanna play again?(Y|N)'
@@ -71,8 +66,7 @@ class UserInput #:nodoc:
       @play = true
       puts "\e[H\e[2J"
       UserInput.new
-      @logic.array_of_number = []
-      @logic.board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+      @logic.clear_board
       game
     else
       p ' Bye'
