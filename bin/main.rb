@@ -17,7 +17,7 @@ class UserInput #:nodoc:
   def game
     puts "\e[H\e[2J"
     creation_of_board
-  
+
     while @play
       @logic.change_turn
       move
@@ -54,7 +54,7 @@ class UserInput #:nodoc:
 
   def creation_of_board
     3.times do |x|
-     p @logic.board[x].join(' ')
+      p @logic.board[x].join(' ')
     end
   end
 
