@@ -42,13 +42,11 @@ class GameLogic #:nodoc:
     @turn = !@turn
   end
 
-  def clear_board 
-     @array_of_number = []
-     @board =[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-     @turn = true
-
+  def clear_board
+    @array_of_number = []
+    @board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    @turn = true
   end
-
 
   def move(number)
     if number < 10 && number.positive? && @array_of_number.none?(number)
