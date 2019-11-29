@@ -2,16 +2,14 @@
 
 class GameLogic #:nodoc:
   attr_writer :number, :turn, :array_of_number, :board
-  attr_reader :tie, :token
+  attr_reader :tie, :token, :board, :turn, :number, :array_of_number
   def initialize
-   
     @array_of_number = []
     @number = nil
     @@token = nil
     @turn = true
     @@tie = nil
     @board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-   
   end
 
   def change_turn

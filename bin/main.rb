@@ -3,7 +3,6 @@
 require_relative "../lib/logic"
 
 class UserInput #:nodoc:
-  attr_accessor :board
   def initialize
     puts ' You are about to start the Tic Tac Toe game.'
     puts " What's the name of the first player?"
@@ -12,7 +11,6 @@ class UserInput #:nodoc:
     @player2 = gets.chomp
     @play = true
     @retry = nil
- 
     @logic = GameLogic.new
   end
 
@@ -56,9 +54,9 @@ class UserInput #:nodoc:
 
   def creation_of_board
     3.times do |x|
-      p @logic.board[x].join(' ')
-     end
-   end
+     p @logic.board[x].join(' ')
+    end
+  end
 
   def retry_game
     puts ' Wanna play again?(Y|N)'
