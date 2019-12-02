@@ -1,8 +1,8 @@
 # frozen_string_literal: true.
 
 class Player #:nodoc:
-  attr_accessor :choices, :winner, :array_of_number
-  attr_reader :name, :sign, :position
+  attr_reader :name, :sign, :position, :choices, :winner, :array_of_number
+  attr_writer :winner
 
   def initialize(name, sign, winner = false)
     @name = name
@@ -15,4 +15,5 @@ class Player #:nodoc:
   def new_array(number)
     @array_of_number << number
   end
+  
 end

@@ -65,7 +65,7 @@ while play
 
   puts 'Would you like to play again? ( Y | N )'
   retries = gets.chomp.upcase
-  until retries.include?('Y') || retries.include?('N')
+  until retries == ('Y') || retries == ('N')
     puts 'Please select a valid option.'
     retries = gets.chomp.upcase
   end
