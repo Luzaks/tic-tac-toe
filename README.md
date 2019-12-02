@@ -1,4 +1,4 @@
-# tic-tac-toe
+# <div align="center"><img src="Images/tic-tac-toe.JPG"></div>
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ This is a project where you can play the Tic-Tac-Toe game, (builded with Ruby la
 
 ### Built With
 
-* [RUBY]()
+* RUBY
 
 ## Getting started
 
@@ -54,7 +54,7 @@ Melissa Castorena - mcastorena0316@gmail.com
 
 Guadalupe Rangel- kanemekanik@gmail.com
 
-Project Link: [Tic-Tac-Toe]()
+Project Link: [Tic-Tac-Toe](https://github.com/Luzaks/tic-tac-toe/tree/development)
 
 
 
