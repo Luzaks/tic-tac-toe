@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true.
 
-require_relative "../lib/player"
-require_relative "../lib/board"
+require_relative '../lib/player'
+require_relative '../lib/board'
 
 retries = nil
 winning_moves = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
@@ -13,7 +13,7 @@ while play
   puts 'What\'s the name of the first player? '
   player1 = Player.new(gets.chomp, 'X')
   puts 'What \'s the name of the second player? '
-  player2 = Player.new(gets.chomp, "O")
+  player2 = Player.new(gets.chomp, 'O')
   puts "\e[H\e[2J"
   boards = Board.new
   boards.creation_of_board
@@ -70,7 +70,7 @@ while play
     retries = gets.chomp.upcase
   end
 
-  unless retries == "Y"
+  unless retries == 'Y'
     puts 'Good-bye then. Have a nice trip!'
     return false
   end
