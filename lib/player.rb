@@ -1,4 +1,4 @@
-# frozen_string_literal: true.
+# frozen_string_literal: true
 
 class Player #:nodoc:
   attr_reader :name, :sign, :position, :choices, :winner, :array_of_number
@@ -15,5 +15,4 @@ class Player #:nodoc:
   def new_array(number)
     @array_of_number << number
   end
-  
 end
