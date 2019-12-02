@@ -9,13 +9,6 @@ class Board #:nodoc:
     @tie2 = nil
   end
 
-  def creation_of_board
-    3.times do |x|
-      puts @board[x].join(' | ')
-      puts '----------'
-    end
-  end
-
   def includes(number)
     @tie = @board.any? do |x|
       x.any? do |cell|

@@ -16,7 +16,15 @@ while play
   player2 = Player.new(gets.chomp, 'O')
   puts "\e[H\e[2J"
   boards = Board.new
-  boards.creation_of_board
+
+  def creation_of_board(boards)
+    3.times do |x|
+      puts boards.board[x].join(' | ')
+      puts '----------'
+    end
+  end
+
+  creation_of_board(boards)
 
   def game(boards, player, winning_moves)
     puts "#{player.name} choose a number of the board:  "
@@ -44,7 +52,7 @@ while play
       end
     end
     puts "\e[H\e[2J"
-    boards.creation_of_board
+    creation_of_board(boards)
   end
 
   until boards.full_board
