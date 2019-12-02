@@ -1,4 +1,4 @@
-# <div align="center"><img src="Images/tic-tac-toe.JPG"></div>
+# <div align="center"><img src="Images/tic-tac-toe.jpg"></div>
 
 ## Table of Contents
 
