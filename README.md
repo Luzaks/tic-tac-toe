@@ -14,7 +14,7 @@
 This is a project where you can play the Tic-Tac-Toe game, (builded with Ruby language), for two players, who take turns for drawing X or O in spaces of a 3×3 board. The player who first place three of their marks in a horizontal, vertical, or diagonal row is the winner. 
 
 
-<div align="center"><img src="Images/board-pic.jpg"></div>
+<div align="center"><img src="Images/board-pic.JPG"></div>
 
 ### Built With
 
