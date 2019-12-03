@@ -1,7 +1,5 @@
 require  './lib/player'
 require  './lib/board'
-require  './bin/main'
-
 
 player1= "Lu"
 RSpec.describe Player do
@@ -48,6 +46,10 @@ RSpec.describe Board do
   end
 
   it ' Return false if it\'s an invalid move. ' do
+    expect(init_board.includes("ana")).to(eq(false))
+  end
+
+  it ' Return false if the number is already selected ' do
     init_board.board[0][0] = 'X'
     expect(init_board.includes(1)).to(eq(false))
   end
