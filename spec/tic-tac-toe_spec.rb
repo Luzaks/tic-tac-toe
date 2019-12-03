@@ -1,5 +1,7 @@
 require  './lib/player'
 require  './lib/board'
+require  './bin/main'
+
 
 player1= "Lu"
 RSpec.describe Player do
@@ -69,4 +71,3 @@ RSpec.describe Board do
   end
 
 end
-
